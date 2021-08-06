@@ -2,7 +2,7 @@
 This plugin is generates a table of contents for any figma file to allow editors and viewers to quickly jump into any page without having to use the side navigation.
 
 ## Demo
-![GIF of using the plugin](https://github.com/shantsis/Table-of-Contents/blob/main/demo.gif)
+![video clip of using the plugin - runs the plugin once, generating a frame with all the links. Click on any link to jump to its page.](https://github.com/shantsis/Table-of-Contents/blob/main/demo.mov)
 
 
 # How to Use
