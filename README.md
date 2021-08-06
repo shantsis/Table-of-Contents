@@ -1,41 +1,20 @@
-Below are the steps to get your plugin running. You can also find instructions at:
+# Introduction
+This plugin is generates a table of contents for any figma file to allow editors and viewers to quickly jump into any page without having to use the side navigation.
 
-  https://www.figma.com/plugin-docs/setup/
+## Demo
+![GIF of using the plugin](https://github.com/shantsis/Table-of-Contents/blob/main/demo.gif)
 
-This plugin template uses Typescript and NPM, two standard tools in creating JavaScript applications.
 
-First, download Node.js which comes with NPM. This will allow you to install TypeScript and other
-libraries. You can find the download link here:
+# How to Use
+To run the plugin,
+1. Install the plugin.
+2. Open the desired file and navigate to the page you'd like to add the table of contents to.
+3. From the menu, File -> Plugins -> Table of Contents.
+4. Once the file runs, you should see either a success message.
 
-  https://nodejs.org/en/download/
+# Making it Your Own
+Adjust the appearance of the content or change the rules as follows:
+* on line 37, add your own font family
+* one line 42, define the frame appearance
+* on line 68, adjust the page text appearance and the filter rule on divided sections (right now any page containing a "--" is treated as a section divider and does not get a link treatment)
 
-Next, install TypeScript using the command:
-
-  npm install -g typescript
-
-Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
-
-  npm install --save-dev @figma/plugin-typings
-
-If you are familiar with JavaScript, TypeScript will look very familiar. In fact, valid JavaScript code
-is already valid Typescript code.
-
-TypeScript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
-
-For more information, visit https://www.typescriptlang.org/
-
-Using TypeScript requires a compiler to convert TypeScript (code.ts) into JavaScript (code.js)
-for the browser to run.
-
-We recommend writing TypeScript code using Visual Studio code:
-
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Open this directory in Visual Studio Code.
-3. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "tsc: watch - tsconfig.json". You will have to do this again every time
-    you reopen Visual Studio Code.
-
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
-# Table-of-Contents
