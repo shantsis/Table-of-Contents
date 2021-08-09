@@ -26,6 +26,7 @@ importFonts()
       figma.viewport.scrollAndZoomIntoView(frame.children)
 
       //close the plugin
+      figma.currentPage.setRelaunchData({ open: '' })
       figma.closePlugin("Table of Contents has been added 🚀")
     })
     .catch(error => {

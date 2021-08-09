@@ -3,5 +3,8 @@
   "id": "984625184799159593",
   "api": "1.0.0",
   "main": "code.js",
-  "enablePrivatePluginApi": true
+  "enablePrivatePluginApi": true,
+  "relaunchButtons": [
+    {"command": "open", "name": "Table of Contents", "multipleSelection": true}
+  ]
 }

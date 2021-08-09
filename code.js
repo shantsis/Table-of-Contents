@@ -11,19 +11,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const fileName = figma.root.name;
 var pageNodes = [];
 var pageNames = [];
+//gather all the page names and IDs
 for (var page of figma.root.children) {
     pageNodes.push(page.id);
     pageNames.push(page.name);
 }
+//import the fonts first to create the page
 importFonts()
     .then(() => {
+    //create a frame to place the content
     var frame = setFrame();
+    //add each page
     for (var i = 1; i < pageNodes.length; i++) {
         var text = addPageInfo(pageNodes[i], pageNames[i]);
         frame.appendChild(text);
     }
     //place the frame in focus
     figma.viewport.scrollAndZoomIntoView(frame.children);
+    //close the plugin
+    figma.currentPage.setRelaunchData({ open: '' });
     figma.closePlugin("Table of Contents has been added 🚀");
 })
     .catch(error => {
@@ -37,6 +43,7 @@ function importFonts() {
         let promRoboto = yield figma.loadFontAsync({ family: "Roboto", style: "Regular" });
     });
 }
+//define how the table of the contents should appear
 function setFrame() {
     var frame = figma.createFrame();
     frame.layoutMode = "VERTICAL";
@@ -47,16 +54,20 @@ function setFrame() {
     frame.paddingLeft = 24;
     frame.itemSpacing = 12;
     frame.name = "Table of Contents";
+    //create the title
     var title = figma.createText();
     textStyling(title, 19, { r: 0, g: 0, b: 0 }, "Table of Contents");
     frame.appendChild(title);
+    //add a description to guide viewers on how to use it
     var description = figma.createText();
     textStyling(description, 14, { r: 0.3686274588108063, g: 0.3686274588108063, b: 0.3686274588108063 }, "Click on the name to jump to the corresponding page");
     frame.appendChild(description);
     return frame;
 }
+//text item per page
 function addPageInfo(id, name) {
     var text = figma.createText();
+    //divider pages do not have link styles on them to help separate the pages
     var isTitle = name.includes("--");
     if (!isTitle) {
         //configure the link
@@ -69,9 +80,11 @@ function addPageInfo(id, name) {
     }
     return text;
 }
+//see https://www.figma.com/plugin-docs/editing-properties/
 function clone(val) {
     return JSON.parse(JSON.stringify(val));
 }
+//define the text styling for the page links
 function textStyling(text, size, color, content) {
     text.characters = content;
     text.fontName = { family: "Noto Sans", style: "Regular" };
